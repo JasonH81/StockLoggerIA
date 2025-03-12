@@ -91,4 +91,53 @@ public class FileManager {
 			}
 		return lines;
 	}
+	
+	public int writeNewTemplate() {
+		int firstInteger = 0;
+		ArrayList<String> lines = new ArrayList<>();
+		try {
+			// Reads all lines in the file
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String line;
+			while((line = in.readLine())!=null) {
+				lines.add(line);
+			}
+			
+			BufferedWriter out = new BufferedWriter(new FileWriter(file));
+			
+			// Gets the first line (total stocks)
+			String first = lines.get(0);
+			int firstInt = Integer.parseInt(first);
+			firstInt++;
+			lines.set(0, firstInt + "");
+			for (String tempLine : lines) {
+				out.write(tempLine);
+	            out.newLine();
+			}
+			out.write("ID: " + firstInt + ": ");
+	        out.newLine();
+	        out.write("Stock Name: ");
+	        out.newLine();
+	        out.write("Stock Account: ");
+	        out.newLine();
+	        out.write("Stock Shares: ");
+	        out.newLine();
+	        out.write("Stock Finances: ");
+	        out.newLine();
+	        out.write("**");
+	        
+			out.close();
+			
+			in.close();
+			firstInteger = firstInt;
+		}
+		catch (IOException e) {
+			String displayMessage = "Could not find file " + fileName + ".";
+			int quit = JOptionPane.showConfirmDialog(null, displayMessage, "Quit Program?", JOptionPane.YES_NO_OPTION);
+			if (quit == JOptionPane.YES_OPTION) {		
+				System.exit(0);
+			}		
+		}
+		return firstInteger;
+	}
 }

@@ -1,14 +1,26 @@
-2
+4
 **
 ID: 1:
-Apple
+sdlfkasjfovsjhd;vl
 Business
-100
-$1000000
+2323
+#10w49
 **
 ID: 2:
 Stock Name: Amazon
 Stock Account: Personal
 Stock Shares: 50
 Stock Finances: $500
+**
+ID: 3: 
+Stock Name: 
+Stock Account: 
+Stock Shares: 
+Stock Finances: 
+**
+ID: 4: 
+Stock Name: 
+Stock Account: 
+Stock Shares: 
+Stock Finances: 
 **

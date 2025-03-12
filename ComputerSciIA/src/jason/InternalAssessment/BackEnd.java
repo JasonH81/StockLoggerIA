@@ -4,9 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -22,6 +26,8 @@ private static final long serialVersionUID = 1L;
 private StockPanel stockPanel;
 private JPanel mainPanel;
 private StockInfoPanel stockInfoPanel;
+private JToolBar toolBar = new JToolBar("Menu");
+private JButton addButton = new JButton("Add");
     
     public BackEnd() {
         initGUI();
@@ -67,7 +73,21 @@ private StockInfoPanel stockInfoPanel;
 		
 		// game panel
 		mainPanel.add(stockPanel, BorderLayout.WEST);
+		mainPanel.add(toolBar, BorderLayout.NORTH);
+		addToolBars();
 		pack();
+    }
+    
+    private void addToolBars() {
+    	// Adding new stock button
+    	addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 FileManager fm = new FileManager();
+				 int ID = fm.writeNewTemplate();
+				 stockPanel.addNewButton(ID);
+			}
+		});
+    	toolBar.add(addButton);
     }
     
     public void createInfoPanel(int id) {
