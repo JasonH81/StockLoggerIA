@@ -91,7 +91,7 @@ private JButton addButton = new JButton("Add");
     }
     
     public void createInfoPanel(int id) {
-    	stockInfoPanel = new StockInfoPanel(id);
+    	stockInfoPanel = new StockInfoPanel(id, stockPanel);
     	mainPanel.add(stockInfoPanel, BorderLayout.CENTER);
     	setMinimumSize(new Dimension(800, 640));
     	setLocationRelativeTo(null);

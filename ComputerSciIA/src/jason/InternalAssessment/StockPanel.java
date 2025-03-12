@@ -12,10 +12,8 @@ public class StockPanel extends JPanel {
 	private int width = 300;
     private int height = 640;
     
-    private StockInfoButton firstStock;
-    private StockInfoButton secondStock;
-    
     BackEnd backEnd;
+    FileManager fm = new FileManager();
     
     public StockPanel(BackEnd backEnd) {
         initGUI();
@@ -29,6 +27,7 @@ public class StockPanel extends JPanel {
 //        		
 //        	}
 //        });
+        addStockButtons();
     }
     
     // Set up java swing panel
@@ -36,6 +35,20 @@ public class StockPanel extends JPanel {
     public Dimension getPreferredSize() {
         Dimension size = new Dimension(width, height);
         return size;
+    }
+    
+    private void addStockButtons() {
+    	for (int i = 1; i <= fm.getNumOfStocks(); i++) {
+    		StockInfoButton temp = new StockInfoButton(fm.getStockName(i), null, i, backEnd);
+    		add(temp);
+    	}
+    	repaint();
+    	revalidate();
+    }
+    
+    public void updateStockButtons() {
+    	removeAll();
+    	addStockButtons();
     }
     
     public void addNewButton(int ID) {
