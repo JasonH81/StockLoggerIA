@@ -48,7 +48,7 @@ public class StockTextField extends JTextField {
     	this.setText("" + string);
     	infoPanel.changeField(string, position);
     	if (position==1) {
-    		stockAPI.getStockData(string);
+    		infoPanel.updateStockPrice(stockAPI.getStockData(string));
     	}
     }
  }

@@ -77,7 +77,7 @@ private JButton backButton = new JButton("Back");
 				killInfoPanel();
 			}
 		});
-   	toolBar.add(backButton);
+    	toolBar.add(backButton);
     }
     
     public void createInfoPanel(int id) {

@@ -1,10 +1,14 @@
 package jason.InternalAssessment;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class StockInfoPanel extends JPanel {
@@ -21,9 +25,9 @@ public class StockInfoPanel extends JPanel {
     private StockTextField fourthField;
     
     private StockPanel stockPanel;
+    private JLabel stockPrice;
     
     public StockInfoPanel(int i, StockPanel stockPanel) {
-    	System.out.println("Created new stock info panel");
     	this.stockPanel = stockPanel;
     	fileM = new FileManager();
     	ID = i;
@@ -42,6 +46,7 @@ public class StockInfoPanel extends JPanel {
 		// background
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, width, height);
+		
 	}
     
     private void initGUI() {
@@ -57,6 +62,18 @@ public class StockInfoPanel extends JPanel {
         	add(thirdField);
         	add(fourthField);
         }
+        
+        JPanel pricePanel = new JPanel();
+        pricePanel.setBackground(Color.LIGHT_GRAY);
+        pricePanel.setPreferredSize(new Dimension(500, 100));
+        stockPrice = new JLabel();
+        stockPrice.setFont(new Font(Font.DIALOG, Font.BOLD, 32));
+        pricePanel.add(stockPrice);
+        add(pricePanel, BorderLayout.PAGE_END);
+    }
+    
+    public void updateStockPrice(String price) {
+    	stockPrice.setText("$" + price);
     }
    
     

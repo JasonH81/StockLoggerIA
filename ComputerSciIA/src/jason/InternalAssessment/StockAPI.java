@@ -13,37 +13,32 @@ public class StockAPI {
 		
 	}
 	
-	public void getStockSymbol(String stockName) {
-		
-	}
-	
-	public void getStockData(String stockSymbol) {
-		    String API_KEY = "5619e9d0cdf646bbb95934a8d34bc04d";
+	public String getStockData(String stockSymbol) {
+		String stockPrice = "";
+	    String API_KEY = "5619e9d0cdf646bbb95934a8d34bc04d";
+        String urlString = "https://api.twelvedata.com/price?symbol=" + stockSymbol + "&apikey=" + API_KEY;
+        System.out.println(urlString);		        
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
 
-		        String urlString = "https://api.twelvedata.com/price?symbol=" + stockSymbol + "&apikey=" + API_KEY;
-		        System.out.println(urlString);		        
-		        try {
-		            URL url = new URL(urlString);
-		            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		            connection.setRequestMethod("GET");
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
 
-		            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-		            String inputLine;
-		            StringBuilder response = new StringBuilder();
-
-		            while ((inputLine = in.readLine()) != null) {
-		                response.append(inputLine);
-		            }
-		            in.close();
-		            
-		            String stockPrice = response.toString();
-		            stockPrice = stockPrice.substring(10, stockPrice.length()-2);
-		            System.out.println(stockSymbol + " price: " + stockPrice);
-		            
-
-		        } catch (Exception e) {
-		            e.printStackTrace();
-		        }
-		    
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            
+            stockPrice = response.toString();
+            stockPrice = stockPrice.substring(10, stockPrice.length()-2);
+            System.out.println(stockSymbol + " price: " + stockPrice);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stockPrice;
 	}
 }
