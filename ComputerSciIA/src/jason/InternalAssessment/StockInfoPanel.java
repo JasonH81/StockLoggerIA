@@ -57,7 +57,6 @@ public class StockInfoPanel extends JPanel {
         	add(thirdField);
         	add(fourthField);
         }
-        System.out.println("Created new stock text fields");
     }
    
     
@@ -66,6 +65,5 @@ public class StockInfoPanel extends JPanel {
     	// Position is the exact criteria to modify
     	// Message is what you replace it with
     	fileM.writeStockData(ID, message, position);
-    	System.out.println("Changed field");
     }
 }

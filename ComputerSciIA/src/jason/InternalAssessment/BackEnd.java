@@ -35,6 +35,7 @@ private JButton backButton = new JButton("Back");
 		setLocationRelativeTo(null);
 		
 		setMinimumSize(new Dimension(300, 640));
+		setMaximumSize(new Dimension(300, 640));
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -49,16 +50,16 @@ private JButton backButton = new JButton("Back");
 		
 		stockPanel = new StockPanel(this);
 		
-		scrollPane = new JScrollPane(stockPanel);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane = new JScrollPane(stockPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
+		scrollPane.setPreferredSize(new Dimension(300, 640));
+
 		
 		// game panel
 		mainPanel.add(scrollPane, BorderLayout.WEST);
 		mainPanel.add(toolBar, BorderLayout.NORTH);
 		addToolBars();
-		pack();
+		//pack();
     }
     
     private void addToolBars() {
@@ -82,7 +83,6 @@ private JButton backButton = new JButton("Back");
     public void createInfoPanel(int id) {
     	if (stockInfoPanel != null) {
             mainPanel.remove(stockInfoPanel);
-            System.out.println("Killed current info panel");
         }
     	stockInfoPanel = new StockInfoPanel(id, stockPanel);
     	stockPanel.updateStockButtons();
@@ -91,7 +91,7 @@ private JButton backButton = new JButton("Back");
     	setLocationRelativeTo(null);
     	mainPanel.repaint();
     	mainPanel.revalidate();
-    	pack();
+    	//pack();
     }
     
     public void killInfoPanelHidden() {

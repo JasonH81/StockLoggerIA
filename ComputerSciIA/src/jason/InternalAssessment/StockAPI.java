@@ -24,10 +24,10 @@ public class StockAPI {
 		        System.out.println(urlString);		        
 		        try {
 		            URL url = new URL(urlString);
-		            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		            conn.setRequestMethod("GET");
+		            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		            connection.setRequestMethod("GET");
 
-		            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		            String inputLine;
 		            StringBuilder response = new StringBuilder();
 

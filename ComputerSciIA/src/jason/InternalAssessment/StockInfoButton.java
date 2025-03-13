@@ -16,12 +16,15 @@ public class StockInfoButton extends JButton {
 	private String stockName;
 	private int ID;
 	private BackEnd backEnd;
+	private int width = 300;
+	private int height = 150;
 	
 	public StockInfoButton(String stockName, Icon icon, int ID, BackEnd backEnd) {
 		super(stockName, icon);
 		this.stockName = stockName;
 		this.backEnd = backEnd;
-		setPreferredSize(new Dimension(200, 100));
+		setPreferredSize(new Dimension(width, height));
+		setMaximumSize(new Dimension(width, height));
 		addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setInformation(ID);
@@ -36,6 +39,11 @@ public class StockInfoButton extends JButton {
 		});
 		 this.add(deleteButton, BorderLayout.PAGE_END);
 	}
+	
+	public Dimension getPreferredSize() {
+        Dimension size = new Dimension(width, height);
+        return size;
+    }
 	
 	public String getStockName() {
 		return stockName;

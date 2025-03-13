@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 public class StockPanel extends JPanel {
@@ -19,15 +20,16 @@ public class StockPanel extends JPanel {
     public StockPanel(BackEnd backEnd) {
         initGUI();
         this.backEnd = backEnd;
-        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         addStockButtons();
     }
     
     // Set up java swing panel
     @Override
     public Dimension getPreferredSize() {
-    	Dimension size = new Dimension(width, getComponentCount()*100);
-        return size;
+    	int panelHeight = getComponentCount() * 160;
+        return new Dimension(width, Math.max(height, panelHeight));
     }
     
     private void addStockButtons() {
@@ -55,7 +57,6 @@ public class StockPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
 		// background
-    	super.paintComponent(g);
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, width, height);
 	}
