@@ -15,11 +15,11 @@ import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import com.crazzyghost.alphavantage.AlphaVantage;
-import com.crazzyghost.alphavantage.Config;
-import com.crazzyghost.alphavantage.parameters.Interval;
-import com.crazzyghost.alphavantage.parameters.OutputSize;
-import com.crazzyghost.alphavantage.timeseries.response.TimeSeriesResponse;
+//import com.crazzyghost.alphavantage.AlphaVantage;
+//import com.crazzyghost.alphavantage.Config;
+//import com.crazzyghost.alphavantage.parameters.Interval;
+//import com.crazzyghost.alphavantage.parameters.OutputSize;
+//import com.crazzyghost.alphavantage.timeseries.response.TimeSeriesResponse;
 
 public class BackEnd extends JFrame {
 
@@ -44,20 +44,12 @@ private JButton addButton = new JButton("Add");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		// Configure the java stock API
-		Config cfg = Config.builder()
-			    .key("NYLCCRWK6UCTDZ6W")
-			    .timeOut(10)
-			    .build();
-		
-		AlphaVantage.api().init(cfg);
-		
-		TimeSeriesResponse response = AlphaVantage.api()
-			    .timeSeries()
-			    .intraday()
-			    .forSymbol("AAPL")
-			    .interval(Interval.FIVE_MIN)
-			    .outputSize(OutputSize.FULL)
-			    .fetchSync();
+//		Config cfg = Config.builder()
+//			    .key("NYLCCRWK6UCTDZ6W")
+//			    .timeOut(10)
+//			    .build();
+//		
+//		AlphaVantage.api().init(cfg);
 		
 		//System.out.println(response);
     }
@@ -115,9 +107,9 @@ private JButton addButton = new JButton("Add");
     	System.out.println("Killed current info panel");
     	mainPanel.remove(stockInfoPanel);
     	setMinimumSize(new Dimension(300, 640));
-    	mainPanel.repaint();
-    	mainPanel.revalidate();
-    	pack();
+    	//mainPanel.repaint();
+    	//mainPanel.revalidate();
+    	//pack();
     	setLocationRelativeTo(null);
     }
     

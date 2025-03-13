@@ -10,6 +10,7 @@ public class StockTextField extends JTextField {
 	private static final long serialVersionUID = 1L;
 	private StockInfoPanel infoPanel;
 	private int position;
+	private StockAPI stockAPI = new StockAPI();
 	
 	public StockTextField() {
 		super("1", 5);
@@ -46,5 +47,8 @@ public class StockTextField extends JTextField {
     	String string = this.getText();
     	this.setText("" + string);
     	infoPanel.changeField(string, position);
+    	if (position==1) {
+    		stockAPI.getStockData(string);
+    	}
     }
  }

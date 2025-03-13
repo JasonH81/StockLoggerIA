@@ -1,25 +1,37 @@
-4
+6
 **
 ID: 1: 
-Stock Name: Amazon
+Stock Name: AAPL
 Stock Account: Position
 Stock Shares: Shares
 Stock Finances: Price
 **
 ID: 2: 
-Stock Name: Microsoft
+Stock Name: IBM
 Stock Account: Position
 Stock Shares: Shares
 Stock Finances: Price
 **
 ID: 3: 
-Stock Name: Tesla
+Stock Name: TSLA
 Stock Account: 500
 Stock Shares: 2342
-Stock Finances:  2344
+Stock Finances: 2344
 **
 ID: 4: 
 Stock Name: Disney
+Stock Account: 
+Stock Shares: 
+Stock Finances: 
+**
+ID: 5: 
+Stock Name: Lockheed
+Stock Account: 
+Stock Shares: 
+Stock Finances: 
+**
+ID: 6: 
+Stock Name: 
 Stock Account: 
 Stock Shares: 
 Stock Finances: 

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class FileManager {
 	
 	BufferedWriter out;
-	public static String fileName = "Untitled2.txt";
+	public static String fileName = "StockLog.txt";
 	private File file;
 	
 	public FileManager() {
