@@ -23,6 +23,7 @@ public class StockInfoPanel extends JPanel {
     private StockPanel stockPanel;
     
     public StockInfoPanel(int i, StockPanel stockPanel) {
+    	System.out.println("Created new stock info panel");
     	this.stockPanel = stockPanel;
     	fileM = new FileManager();
     	ID = i;
@@ -56,6 +57,7 @@ public class StockInfoPanel extends JPanel {
         	add(thirdField);
         	add(fourthField);
         }
+        System.out.println("Created new stock text fields");
     }
    
     
@@ -64,6 +66,6 @@ public class StockInfoPanel extends JPanel {
     	// Position is the exact criteria to modify
     	// Message is what you replace it with
     	fileM.writeStockData(ID, message, position);
-    	stockPanel.updateStockButtons();
+    	System.out.println("Changed field");
     }
 }

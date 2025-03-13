@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -25,6 +26,7 @@ public class BackEnd extends JFrame {
 private static final long serialVersionUID = 1L;
 private StockPanel stockPanel;
 private JPanel mainPanel;
+private JScrollPane scrollPane;
 private StockInfoPanel stockInfoPanel;
 private JToolBar toolBar = new JToolBar("Menu");
 private JButton addButton = new JButton("Add");
@@ -57,7 +59,7 @@ private JButton addButton = new JButton("Add");
 			    .outputSize(OutputSize.FULL)
 			    .fetchSync();
 		
-		System.out.println(response);
+		//System.out.println(response);
     }
     
     private void initGUI() {
@@ -68,11 +70,15 @@ private JButton addButton = new JButton("Add");
 		add(mainPanel, BorderLayout.CENTER);
 		
 		stockPanel = new StockPanel(this);
-		stockPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 20, 50));
+		//stockPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 20, 50));
 		
+		scrollPane = new JScrollPane(stockPanel);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
 		
 		// game panel
-		mainPanel.add(stockPanel, BorderLayout.WEST);
+		mainPanel.add(scrollPane, BorderLayout.WEST);
 		mainPanel.add(toolBar, BorderLayout.NORTH);
 		addToolBars();
 		pack();
@@ -91,20 +97,27 @@ private JButton addButton = new JButton("Add");
     }
     
     public void createInfoPanel(int id) {
+    	if (stockInfoPanel != null) {
+            mainPanel.remove(stockInfoPanel);
+            System.out.println("Killed current info panel");
+        }
     	stockInfoPanel = new StockInfoPanel(id, stockPanel);
+    	stockPanel.updateStockButtons();
     	mainPanel.add(stockInfoPanel, BorderLayout.CENTER);
     	setMinimumSize(new Dimension(800, 640));
     	setLocationRelativeTo(null);
     	mainPanel.repaint();
     	mainPanel.revalidate();
+    	pack();
     }
     
-    public void killInfoPanel(int id) {
+    public void killInfoPanel() {
+    	System.out.println("Killed current info panel");
     	mainPanel.remove(stockInfoPanel);
     	setMinimumSize(new Dimension(300, 640));
-    	pack();
     	mainPanel.repaint();
     	mainPanel.revalidate();
+    	pack();
     	setLocationRelativeTo(null);
     }
     

@@ -1,25 +1,25 @@
 4
 **
-ID: 1:
-sdlfkasjfovsjhd;vl
-Business
-2323
-#10w49
-**
-ID: 2:
+ID: 1: 
 Stock Name: Amazon
-Stock Account: Personal
-Stock Shares: 50
-Stock Finances: $500
+Stock Account: Position
+Stock Shares: Shares
+Stock Finances: Price
+**
+ID: 2: 
+Stock Name: Microsoft
+Stock Account: Position
+Stock Shares: Shares
+Stock Finances: Price
 **
 ID: 3: 
-Stock Name: 
-Stock Account: 
-Stock Shares: 
-Stock Finances: 
+Stock Name: Tesla
+Stock Account: 500
+Stock Shares: 2342
+Stock Finances:  2344
 **
 ID: 4: 
-Stock Name: 
+Stock Name: Disney
 Stock Account: 
 Stock Shares: 
 Stock Finances: 

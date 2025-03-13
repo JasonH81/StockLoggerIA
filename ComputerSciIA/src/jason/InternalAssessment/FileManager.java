@@ -37,9 +37,11 @@ public class FileManager {
 			// Temporary logging
 			//System.out.println("Position: " + position + "\nTarget Index: " + target + "\nTarget: " + lines.get(target) + "\nMessage: " + message);
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
-			lines.set(target, message);
-			for (String tempLine : lines) {
-				out.write(tempLine);
+			String tempLine = lines.get(target);
+			int temp = tempLine.lastIndexOf(" ");
+			lines.set(target, tempLine.substring(0, temp) +  " " + message);
+			for (String iterativeLine : lines) {
+				out.write(iterativeLine);
 	            out.newLine();
 			}
 			out.close();

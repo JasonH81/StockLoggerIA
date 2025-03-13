@@ -31,7 +31,7 @@ public class StockInfoButton extends JButton {
 		exitButton.setBackground(Color.RED);
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				removeInformation(ID);
+				removeInformation();
 			}
 		});
 		// this.setLayout();
@@ -46,8 +46,8 @@ public class StockInfoButton extends JButton {
 		return ID;
 	}
 	
-	private void removeInformation(int id) {
-		backEnd.killInfoPanel(id);
+	private void removeInformation() {
+		backEnd.killInfoPanel();
 	}
 	
 	private void setInformation(int id) {
