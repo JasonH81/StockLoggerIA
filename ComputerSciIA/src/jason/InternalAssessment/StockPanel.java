@@ -19,10 +19,6 @@ public class StockPanel extends JPanel {
     public StockPanel(BackEnd backEnd) {
         initGUI();
         this.backEnd = backEnd;
-        //firstStock = new StockInfoButton("Microsoft", null, 1, backEnd);
-        //secondStock = new StockInfoButton("Tesla", null, 2, backEnd);
-        //add(firstStock);
-        //add(secondStock);
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
         addStockButtons();
     }
@@ -37,23 +33,19 @@ public class StockPanel extends JPanel {
     private void addStockButtons() {
     	for (int i = 1; i <= fm.getNumOfStocks(); i++) {
     		StockInfoButton temp = new StockInfoButton(fm.getStockName(i), null, i, backEnd);
-    		System.out.println("Made new stock info button with ID: " + i);
     		add(temp);
     	}
     	repaint();
     	revalidate();
-    	System.out.println("Added Stock Buttons from stock panel");
     }
     
     public void updateStockButtons() {
-    	System.out.println("Updated stock buttons");
-    	backEnd.killInfoPanel();
+    	backEnd.killInfoPanelHidden();
     	removeAll();
     	addStockButtons();
     }
     
     public void addNewButton(int ID) {
-    	System.out.println("Added new stock button");
     	StockInfoButton newStock = new StockInfoButton("Test", null, ID, backEnd);
     	add(newStock);
     	repaint();

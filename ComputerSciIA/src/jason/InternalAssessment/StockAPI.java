@@ -20,7 +20,6 @@ public class StockAPI {
 	public void getStockData(String stockSymbol) {
 		    String API_KEY = "5619e9d0cdf646bbb95934a8d34bc04d";
 
-		        //String symbol = "AAPL";
 		        String urlString = "https://api.twelvedata.com/price?symbol=" + stockSymbol + "&apikey=" + API_KEY;
 		        System.out.println(urlString);		        
 		        try {

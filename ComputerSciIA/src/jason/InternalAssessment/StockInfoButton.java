@@ -27,27 +27,22 @@ public class StockInfoButton extends JButton {
 				setInformation(ID);
 			}
 		});
-		JButton exitButton = new JButton("Exit");
-		exitButton.setBackground(Color.RED);
-		exitButton.addActionListener(new ActionListener() {
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.setBackground(Color.RED);
+		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				removeInformation();
+				deleteAndShiftStocks(ID);
 			}
 		});
-		// this.setLayout();
-		 this.add(exitButton, BorderLayout.PAGE_END);
+		 this.add(deleteButton, BorderLayout.PAGE_END);
 	}
 	
 	public String getStockName() {
 		return stockName;
 	}
 	
-	public int getID() {
-		return ID;
-	}
-	
-	private void removeInformation() {
-		backEnd.killInfoPanel();
+	private void deleteAndShiftStocks(int id) {
+		backEnd.deleteStockButton(id);
 	}
 	
 	private void setInformation(int id) {

@@ -15,12 +15,6 @@ import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-//import com.crazzyghost.alphavantage.AlphaVantage;
-//import com.crazzyghost.alphavantage.Config;
-//import com.crazzyghost.alphavantage.parameters.Interval;
-//import com.crazzyghost.alphavantage.parameters.OutputSize;
-//import com.crazzyghost.alphavantage.timeseries.response.TimeSeriesResponse;
-
 public class BackEnd extends JFrame {
 
 private static final long serialVersionUID = 1L;
@@ -30,6 +24,7 @@ private JScrollPane scrollPane;
 private StockInfoPanel stockInfoPanel;
 private JToolBar toolBar = new JToolBar("Menu");
 private JButton addButton = new JButton("Add");
+private JButton backButton = new JButton("Back");
     
     public BackEnd() {
         initGUI();
@@ -43,15 +38,6 @@ private JButton addButton = new JButton("Add");
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		// Configure the java stock API
-//		Config cfg = Config.builder()
-//			    .key("NYLCCRWK6UCTDZ6W")
-//			    .timeOut(10)
-//			    .build();
-//		
-//		AlphaVantage.api().init(cfg);
-		
-		//System.out.println(response);
     }
     
     private void initGUI() {
@@ -62,7 +48,6 @@ private JButton addButton = new JButton("Add");
 		add(mainPanel, BorderLayout.CENTER);
 		
 		stockPanel = new StockPanel(this);
-		//stockPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 20, 50));
 		
 		scrollPane = new JScrollPane(stockPanel);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -86,6 +71,12 @@ private JButton addButton = new JButton("Add");
 			}
 		});
     	toolBar.add(addButton);
+    	backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				killInfoPanel();
+			}
+		});
+   	toolBar.add(backButton);
     }
     
     public void createInfoPanel(int id) {
@@ -103,13 +94,32 @@ private JButton addButton = new JButton("Add");
     	pack();
     }
     
-    public void killInfoPanel() {
-    	System.out.println("Killed current info panel");
-    	mainPanel.remove(stockInfoPanel);
+    public void killInfoPanelHidden() {
+    	if (stockInfoPanel!=null) {
+    		mainPanel.remove(stockInfoPanel);
+    	}
     	setMinimumSize(new Dimension(300, 640));
     	//mainPanel.repaint();
     	//mainPanel.revalidate();
     	//pack();
+    	setLocationRelativeTo(null);
+    }
+    
+    public void deleteStockButton(int id) {
+    	FileManager fm = new FileManager();
+    	fm.deleteStockButton(id);
+//    	if (stockInfoPanel != null) {
+//    		killInfoPanel();
+//    	}
+    	stockPanel.updateStockButtons();
+    }
+    
+    public void killInfoPanel() {
+    	mainPanel.remove(stockInfoPanel);
+    	setMinimumSize(new Dimension(300, 640));
+    	mainPanel.repaint();
+    	mainPanel.revalidate();
+    	pack();
     	setLocationRelativeTo(null);
     }
     

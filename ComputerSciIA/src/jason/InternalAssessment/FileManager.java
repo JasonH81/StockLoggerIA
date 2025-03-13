@@ -198,4 +198,52 @@ public class FileManager {
 		}
 		return firstInteger;
 	}
+	
+	public void deleteStockButton(int ID) {
+		ArrayList<String> lines = new ArrayList<>();
+		// Reads all lines in the file
+		try {
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String line;
+			while((line = in.readLine())!=null) {
+				lines.add(line);
+			}
+			int position = 2;
+			if (ID!=1) {
+				position = ID*6 - 4;
+			}
+			for (int i = 0; i<6; i++) {
+				lines.remove(position);
+			}
+			int pos = ID*6 - 4;
+			for (int i = 0; i<getNumOfStocks()-ID; i++) {
+				String temporaryLine = lines.get(pos);
+				System.out.println(temporaryLine);
+				String temp2 = temporaryLine.substring(temporaryLine.length()-3, temporaryLine.length()-2);
+				int temp3 = Integer.parseInt(temp2);
+				temp3--;
+				lines.set(pos, "ID: " + temp3 + ": ");
+				pos+=6;
+			}
+			in.close();
+			String first = lines.get(0);
+			int firstInt = Integer.parseInt(first);
+			firstInt--;
+			lines.set(0, firstInt + "");
+			BufferedWriter out = new BufferedWriter(new FileWriter(file));
+			for (String tempLine : lines) {
+				out.write(tempLine);
+	            out.newLine();
+			}
+			out.close();
+		}
+		catch (IOException e) {
+			String displayMessage = "Could not find file " + fileName + ".";
+			int quit = JOptionPane.showConfirmDialog(null, displayMessage, "Quit Program?", JOptionPane.YES_NO_OPTION);
+			if (quit == JOptionPane.YES_OPTION) {		
+				System.exit(0);
+			}		
+		}
+
+	}
 }
