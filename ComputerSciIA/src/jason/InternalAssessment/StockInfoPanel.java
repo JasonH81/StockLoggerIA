@@ -26,6 +26,7 @@ public class StockInfoPanel extends JPanel {
     
     private StockPanel stockPanel;
     private JLabel stockPrice;
+    private JLabel stockNet;
     
     public StockInfoPanel(int i, StockPanel stockPanel) {
     	this.stockPanel = stockPanel;
@@ -67,13 +68,42 @@ public class StockInfoPanel extends JPanel {
         pricePanel.setBackground(Color.LIGHT_GRAY);
         pricePanel.setPreferredSize(new Dimension(500, 100));
         stockPrice = new JLabel();
+        stockNet = new JLabel();
         stockPrice.setFont(new Font(Font.DIALOG, Font.BOLD, 32));
+        stockNet.setFont(new Font(Font.DIALOG, Font.BOLD, 32));
         pricePanel.add(stockPrice);
+        pricePanel.add(stockNet);
         add(pricePanel, BorderLayout.PAGE_END);
     }
     
-    public void updateStockPrice(String price) {
-    	stockPrice.setText("$" + price);
+    public void updateStockPrice(String price, String symbol) {
+    	stockPrice.setText(symbol + ": $" + price);
+    	int stockCount = Integer.parseInt(thirdField.getText());
+    	double stockPriceOld = Double.parseDouble(fourthField.getText());
+    	double netOld = stockCount * stockPriceOld;
+    	double stockPriceNew = Double.parseDouble(price);
+    	double netNew = stockCount * stockPriceNew;
+    	double net = netNew - netOld;
+    	
+    	// Rounding logic
+    	net*=10;
+    	int intNet = (int) net;
+    	net = intNet/10.0;
+    	if (net < 0) {
+    		stockNet.setForeground(Color.RED);
+    		stockNet.setText("Net Profit: (" + Math.abs(net) + ")");
+    	}
+    	else {
+    		stockNet.setForeground(Color.GREEN);
+    		stockNet.setText("Net Profit: " + (net));
+    	}
+    }
+    
+    public void updateAnyStock() {
+    	firstField.changedInput();
+    	secondField.changedInput();
+    	thirdField.changedInput();
+    	fourthField.changedInput();
     }
    
     

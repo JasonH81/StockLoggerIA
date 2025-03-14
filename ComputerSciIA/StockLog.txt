@@ -1,4 +1,4 @@
-6
+5
 **
 ID: 1: 
 Stock Name: AAPL
@@ -14,9 +14,9 @@ Stock Finances:
 **
 ID: 3: 
 Stock Name: AAPL
-Stock Account: 500
-Stock Shares: 2342
-Stock Finances: 2344
+Stock Account: Personal
+Stock Shares: 30
+Stock Finances: 230
 **
 ID: 4: 
 Stock Name: Disney
@@ -26,12 +26,6 @@ Stock Finances:
 **
 ID: 5: 
 Stock Name: Lockheed
-Stock Account: 
-Stock Shares: 
-Stock Finances: 
-**
-ID: 6: 
-Stock Name: 
 Stock Account: 
 Stock Shares: 
 Stock Finances: 

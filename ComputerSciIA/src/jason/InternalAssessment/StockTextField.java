@@ -43,12 +43,17 @@ public class StockTextField extends JTextField {
 	}
 	
 	// Check for valid number entry
-    private void changedInput() {
+    public void changedInput() {
     	String string = this.getText();
-    	this.setText("" + string);
-    	infoPanel.changeField(string, position);
-    	if (position==1) {
-    		infoPanel.updateStockPrice(stockAPI.getStockData(string));
+    	if (string!=null) {
+	    	this.setText("" + string);
+	    	infoPanel.changeField(string, position);
+	    	if (position==1) {
+	    		infoPanel.updateStockPrice(stockAPI.getStockData(string), string);
+	    	}
+    	}
+    	else {
+    		
     	}
     }
  }

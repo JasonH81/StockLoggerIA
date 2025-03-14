@@ -25,6 +25,7 @@ private StockInfoPanel stockInfoPanel;
 private JToolBar toolBar = new JToolBar("Menu");
 private JButton addButton = new JButton("Add");
 private JButton backButton = new JButton("Back");
+private JButton calculateButton = new JButton("Calculate");
     
     public BackEnd() {
         initGUI();
@@ -78,6 +79,18 @@ private JButton backButton = new JButton("Back");
 			}
 		});
     	toolBar.add(backButton);
+    	calculateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculateStockInfo();
+			}
+		});
+    	toolBar.add(calculateButton);
+    }
+    
+    private void calculateStockInfo() {
+    	if (stockInfoPanel != null) {
+    		stockInfoPanel.updateAnyStock();
+    	}
     }
     
     public void createInfoPanel(int id) {
@@ -135,5 +148,4 @@ private JButton backButton = new JButton("Back");
 			}
 		});
 	}
-
 }
