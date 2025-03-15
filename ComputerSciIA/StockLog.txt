@@ -13,7 +13,7 @@ Stock Shares:
 Stock Finances: 
 **
 ID: 3: 
-Stock Name: AAPL
+Stock Name: NVDA
 Stock Account: Personal
 Stock Shares: 30
 Stock Finances: 230

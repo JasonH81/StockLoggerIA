@@ -48,7 +48,7 @@ public class StockPanel extends JPanel {
     }
     
     public void addNewButton(int ID) {
-    	StockInfoButton newStock = new StockInfoButton("Test", null, ID, backEnd);
+    	StockInfoButton newStock = new StockInfoButton("", null, ID, backEnd);
     	add(newStock);
     	repaint();
     	revalidate();

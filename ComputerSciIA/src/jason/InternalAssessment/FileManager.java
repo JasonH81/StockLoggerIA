@@ -201,7 +201,6 @@ public class FileManager {
 	
 	public void deleteStockButton(int ID) {
 		ArrayList<String> lines = new ArrayList<>();
-		// Reads all lines in the file
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(file));
 			String line;

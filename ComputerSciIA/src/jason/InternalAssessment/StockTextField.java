@@ -3,6 +3,7 @@ package jason.InternalAssessment;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class StockTextField extends JTextField {
@@ -32,7 +33,7 @@ public class StockTextField extends JTextField {
 		this.position = position;
 		addFocusListener(new FocusAdapter() {
 			public void focusLost(FocusEvent e) {
-				changedInput();
+				//changedInput();
 			}
 			public void focusGained(FocusEvent e) {
 				JTextField field = (JTextField)e.getSource();
@@ -45,7 +46,7 @@ public class StockTextField extends JTextField {
 	// Check for valid number entry
     public void changedInput() {
     	String string = this.getText();
-    	if (string!=null) {
+    	if (string!=null && string!="") {
 	    	this.setText("" + string);
 	    	infoPanel.changeField(string, position);
 	    	if (position==1) {
@@ -53,7 +54,7 @@ public class StockTextField extends JTextField {
 	    	}
     	}
     	else {
-    		
+    		JOptionPane.showMessageDialog(null, "Must include stock data first");
     	}
     }
  }

@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class StockInfoPanel extends JPanel {
@@ -78,24 +79,29 @@ public class StockInfoPanel extends JPanel {
     
     public void updateStockPrice(String price, String symbol) {
     	stockPrice.setText(symbol + ": $" + price);
-    	int stockCount = Integer.parseInt(thirdField.getText());
-    	double stockPriceOld = Double.parseDouble(fourthField.getText());
-    	double netOld = stockCount * stockPriceOld;
-    	double stockPriceNew = Double.parseDouble(price);
-    	double netNew = stockCount * stockPriceNew;
-    	double net = netNew - netOld;
-    	
-    	// Rounding logic
-    	net*=10;
-    	int intNet = (int) net;
-    	net = intNet/10.0;
-    	if (net < 0) {
-    		stockNet.setForeground(Color.RED);
-    		stockNet.setText("Net Profit: (" + Math.abs(net) + ")");
+    	if (thirdField.getText()!=null && !thirdField.getText().equals("") && fourthField.getText()!=null && !fourthField.getText().equals("")) {
+	    	int stockCount = Integer.parseInt(thirdField.getText());
+	    	double stockPriceOld = Double.parseDouble(fourthField.getText());
+	    	double netOld = stockCount * stockPriceOld;
+	    	double stockPriceNew = Double.parseDouble(price);
+	    	double netNew = stockCount * stockPriceNew;
+	    	double net = netNew - netOld;
+	    	
+	    	// Rounding logic
+	    	net*=10;
+	    	int intNet = (int) net;
+	    	net = intNet/10.0;
+	    	if (net < 0) {
+	    		stockNet.setForeground(Color.RED);
+	    		stockNet.setText("Net Profit: (" + Math.abs(net) + ")");
+	    	}
+	    	else {
+	    		stockNet.setForeground(Color.GREEN);
+	    		stockNet.setText("Net Profit: " + (net));
+	    	}
     	}
     	else {
-    		stockNet.setForeground(Color.GREEN);
-    		stockNet.setText("Net Profit: " + (net));
+    		JOptionPane.showMessageDialog(null, "Must input relevant stock data first");
     	}
     }
     
