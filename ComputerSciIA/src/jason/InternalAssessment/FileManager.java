@@ -18,7 +18,7 @@ public class FileManager {
 	private File file;
 	
 	public FileManager() {
-		file = new File(fileName);
+		file = new File(System.getProperty("user.dir"), fileName);	
 	}
 	
 	public void writeStockData(int ID, String message, int position) {

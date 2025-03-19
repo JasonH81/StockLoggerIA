@@ -25,7 +25,7 @@ Stock Shares:
 Stock Finances: 
 **
 ID: 5: 
-Stock Name: Lockheed
+Stock Name: 
 Stock Account: 
 Stock Shares: 
 Stock Finances: 
